@@ -1,0 +1,40 @@
+<?php
+
+/** @var \Laravel\Lumen\Routing\Router $router */
+
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+});
+
+/**
+ * Authors routes
+ */
+$router->get('/authors', 'AuthorController@index');
+$router->post('/authors', 'AuthorController@store');
+$router->get('/authors/{author}', 'AuthorController@show');
+$router->put('/authors/{author}', 'AuthorController@update');
+$router->patch('/authors/{author}', 'AuthorController@update');
+$router->delete('/authors/{author}', 'AuthorController@destroy');
+
+/**
+ * Books routes
+ */
+$router->get('/books', 'BookController@index');
+$router->post('/books', 'BookController@store');
+$router->get('/books/{book}', 'BookController@show');
+$router->put('/books/{book}', 'BookController@update');
+$router->patch('/books/{book}', 'BookController@update');
+$router->delete('/books/{book}', 'BookController@destroy');
+
+/**
+ * Inventory routes
+ */
+$router->get('/inventory', 'InventoryController@index');
+$router->get('/inventory/book/{book_id}', 'InventoryController@showByBook');
+$router->get('/inventory/available/{book_id}', 'InventoryController@getAvailable');
+$router->post('/inventory', 'InventoryController@store');
+$router->put('/inventory/{id}', 'InventoryController@update');
+$router->patch('/inventory/{id}', 'InventoryController@update');
+$router->delete('/inventory/{id}', 'InventoryController@destroy');
+$router->post('/inventory/reserve', 'InventoryController@reserve');
+$router->post('/inventory/release', 'InventoryController@release');

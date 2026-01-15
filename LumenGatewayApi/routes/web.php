@@ -30,3 +30,18 @@
     $router->put('/books/{book}', 'BookController@update');
     $router->patch('/books/{book}', 'BookController@update');
     $router->delete('/books/{book}', 'BookController@destroy');
+
+
+
+    /**
+     * Inventory routes
+     */
+    $router->get('/inventory', 'InventoryController@index');
+    $router->get('/inventory/book/{book_id}', 'InventoryController@showByBook');
+    $router->get('/inventory/available/{book_id}', 'InventoryController@getAvailable');
+    $router->post('/inventory', 'InventoryController@store');
+    $router->put('/inventory/{id}', 'InventoryController@update');
+    $router->patch('/inventory/{id}', 'InventoryController@update');
+    $router->delete('/inventory/{id}', 'InventoryController@destroy');
+    $router->post('/inventory/reserve', 'InventoryController@reserve');
+    $router->post('/inventory/release', 'InventoryController@release');
